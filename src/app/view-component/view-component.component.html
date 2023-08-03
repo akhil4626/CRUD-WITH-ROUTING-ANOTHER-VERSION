@@ -1,0 +1,41 @@
+<div *ngIf="dataFromDatabase;else err" class="container data-table">
+    <div class="headers">
+      <h2 class="table-title">Welcome to DB View</h2>
+      <button class="btn add" routerLink="/create">Add Record</button>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+              <th>id</th>
+              <th>names</th>
+              <th>email</th>
+              <th>Mobile Number</th>
+              <th>Address</th>
+              <th>Edit</th>
+            </tr>
+        </thead>
+        <tbody class="text-center">
+            <tr *ngFor="let n of database">
+              <td>{{n['id']}}</td>
+              <td>{{n['names']}}</td>
+              <td>{{n['email']}}</td>
+              <td>{{n['PhoneNumber']}}</td>
+              <td>{{n['Address']}}</td>
+              <td>
+                <button class="btn btn-primary" (click) ="openForm(n)" >Edit Record</button>
+              </td>
+              
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<ng-template #err >
+
+  <p class="text-danger">error fetching data</p>
+
+</ng-template>
+
+
